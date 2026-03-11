@@ -128,13 +128,21 @@ O(n log n)
 
 Divide-and-Conquer-Visualization
 │
+
 ├── index.html
+
 ├── style.css
+
 ├── main.js
+
 ├── script.js
+
 ├── algorithms.js
+
 ├── visualizer.js
+
 ├── charts.js
+
 └── README.md
 
 
