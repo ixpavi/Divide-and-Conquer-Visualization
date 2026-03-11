@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divide and Conquer Algorithm Visualizer</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- MathJax for rendering equations -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body class="light-theme">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>D&C Visualizer</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" data-target="home">Home / Intro</a>
+            <div class="nav-section">SORTING</div>
+            <a href="#" class="nav-link" data-target="merge-sort">Merge Sort</a>
+            <a href="#" class="nav-link" data-target="quick-sort">Quick Sort</a>
+            <div class="nav-section">ARRAYS</div>
+            <a href="#" class="nav-link" data-target="min-max">Min and Max Finding</a>
+            <a href="#" class="nav-link" data-target="max-subarray">Largest Subarray Sum</a>
+            <div class="nav-section">MATRICES</div>
+            <a href="#" class="nav-link" data-target="matrix-mult">Matrix Multiplication</a>
+            <a href="#" class="nav-link" data-target="strassen">Strassen's Multiplication</a>
+            <div class="nav-section">GEOMETRY</div>
+            <a href="#" class="nav-link" data-target="closest-pair">Closest Pair of Points</a>
+            <a href="#" class="nav-link" data-target="convex-hull">Convex Hull</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Top Toolbar -->
+        <header class="topbar">
+            <h1 id="page-title">Introduction to Divide and Conquer</h1>
+            <button id="theme-toggle" class="btn btn-icon">🌓 Toggle Theme</button>
+        </header>
+
+        <!-- Pages Container -->
+        <div id="pages-container">
+            <!-- Home Page -->
+            <section id="page-home" class="page active">
+                <div class="card theory-card">
+                    <h2>The Divide and Conquer Paradigm</h2>
+                    <p>Divide and Conquer is a fundamental algorithmic paradigm based on multi-branched recursion. It
+                        works by breaking down a problem into two or more sub-problems of the same or related type,
+                        until these become simple enough to be solved directly. The solutions to the sub-problems are
+                        then combined to give a solution to the original problem.</p>
+
+                    <h3>The 3 Core Steps</h3>
+                    <div class="steps-grid">
+                        <div class="step-box divide">
+                            <h4>1. Divide</h4>
+                            <p>Break the problem into smaller sub-problems that are similar to the original problem.</p>
+                        </div>
+                        <div class="step-box conquer">
+                            <h4>2. Conquer</h4>
+                            <p>Solve the sub-problems recursively. If the sub-problem sizes are small enough (base
+                                case), solve them directly.</p>
+                        </div>
+                        <div class="step-box combine">
+                            <h4>3. Combine</h4>
+                            <p>Combine the solutions of the sub-problems into the solution for the original problem.</p>
+                        </div>
+                    </div>
+                    <p class="mt-20" style="margin-bottom: 30px;">Select an algorithm from the sidebar or click a
+                        quick-link card below to begin learning, interacting, and visualizing!</p>
+                    <div class="home-cards">
+                        <div class="algo-card"
+                            onclick="document.querySelector('.nav-link[data-target=\'merge-sort\']').click()">
+                            <span class="algo-icon">📊</span>
+                            <h4>Merge Sort</h4>
+                        </div>
+                        <div class="algo-card"
+                            onclick="document.querySelector('.nav-link[data-target=\'quick-sort\']').click()">
+                            <span class="algo-icon">⚡</span>
+                            <h4>Quick Sort</h4>
+                        </div>
+                        <div class="algo-card"
+                            onclick="document.querySelector('.nav-link[data-target=\'matrix-mult\']').click()">
+                            <span class="algo-icon">🧮</span>
+                            <h4>Matrix Mult</h4>
+                        </div>
+                        <div class="algo-card"
+                            onclick="document.querySelector('.nav-link[data-target=\'closest-pair\']').click()">
+                            <span class="algo-icon">📍</span>
+                            <h4>Closest Pair</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Algorithm Page Template (Dynamically Populated) -->
+            <section id="page-algorithm" class="page" style="display: none;">
+                <div class="algo-layout">
+                    <!-- Left Column: Theory & Complexity -->
+                    <div class="left-col">
+                        <div class="card" id="theory-panel">
+                            <h2>Theory</h2>
+                            <p id="theory-desc">Algorithm description goes here.</p>
+
+                            <h4>Divide:</h4>
+                            <p id="theory-div">Divide explanation</p>
+
+                            <h4>Conquer:</h4>
+                            <p id="theory-conq">Conquer explanation</p>
+
+                            <h4>Combine:</h4>
+                            <p id="theory-comb">Combine explanation</p>
+
+                            <div class="equation-box">
+                                <strong>Recurrence Relation:</strong>
+                                <div id="theory-equation" class="math-eq">T(n) = aT(n/b) + O(n^d)</div>
+                            </div>
+                        </div>
+
+                        <div class="card" id="pseudocode-panel">
+                            <h2>Pseudocode</h2>
+                            <pre id="algo-pseudocode" class="code-block"></pre>
+                        </div>
+
+                        <div class="card" id="complexity-panel">
+                            <h2>Time Complexity Graph</h2>
+                            <div class="complex-stats">
+                                <div><strong>Best:</strong> <span id="comp-best">O(1)</span></div>
+                                <div><strong>Average:</strong> <span id="comp-avg">O(1)</span></div>
+                                <div><strong>Worst:</strong> <span id="comp-worst">O(1)</span></div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="complexityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Visualizer & Controls -->
+                    <div class="right-col">
+                        <!-- Top: Explanation Cards (Syncs with visualizer) -->
+                        <div class="state-cards">
+                            <div class="state-card" id="state-divide">
+                                <div>Wait</div>
+                            </div>
+                            <div class="state-card" id="state-conquer">
+                                <div>Wait</div>
+                            </div>
+                            <div class="state-card" id="state-combine">
+                                <div>Wait</div>
+                            </div>
+                        </div>
+
+                        <!-- Middle: Visualizer -->
+                        <div class="card visualizer-card">
+                            <div id="vis-container">
+                                <!-- Array Rendering -->
+                                <div id="array-layer" class="vis-layer"></div>
+                                <!-- Matrix Rendering -->
+                                <div id="matrix-layer" class="vis-layer"></div>
+                                <!-- Canvas Geometry -->
+                                <canvas id="canvas-layer" class="vis-layer" width="800" height="350"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Bottom: Controls -->
+                        <div class="card controls-card">
+                            <div class="controls-row">
+                                <label for="data-input" id="data-input-label">Array Input (comma separated):</label>
+                                <input type="text" id="data-input" class="modern-input" value="5, 2, 8, 1, 3, 9, 4, 7">
+                            </div>
+                            <div class="controls-row justify-space">
+                                <div class="playback-controls">
+                                    <button class="btn btn-primary" id="btn-start">▶ Start</button>
+                                    <button class="btn btn-warning" id="btn-pause">⏸ Pause</button>
+                                    <button class="btn btn-danger" id="btn-reset">↺ Reset</button>
+                                </div>
+                                <div class="speed-control">
+                                    <label for="speed-slider">Speed:</label>
+                                    <input type="range" id="speed-slider" min="1" max="20" step="1" value="10">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom: Recursion Tree -->
+                        <div class="card recursion-card" id="recursion-panel" style="display: none;">
+                            <h2>Recursion Tree</h2>
+                            <div class="tree-container" id="tree-container">
+                                <canvas id="tree-canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modular Scripts -->
+    <script src="charts.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="visualizer.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
