@@ -1,0 +1,596 @@
+/* === CSS Variables: Theming === */
+:root {
+    --primary-color: #4361ee;
+    --primary-hover: #3a0ca3;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --border-radius: 8px;
+    --sidebar-width: 260px;
+}
+
+body.light-theme {
+    --bg-color: #f4f7f6;
+    --panel-bg: #ffffff;
+    --sidebar-bg: #2b2d42;
+    --sidebar-text: #edf2f4;
+    --text-color: #2b2d42;
+    --text-muted: #8d99ae;
+    --border-color: #e5e5e5;
+    --code-bg: #f8f9fa;
+}
+
+body.dark-theme {
+    --bg-color: #121212;
+    --panel-bg: #1e1e1e;
+    --sidebar-bg: #0d0d0d;
+    --sidebar-text: #e0e0e0;
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --border-color: #333333;
+    --code-bg: #2d2d2d;
+}
+
+/* === Global Resets === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* === Typography === */
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* === Utilities === */
+.mt-20 {
+    margin-top: 20px;
+}
+
+.justify-space {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* === Layout === */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+
+.nav-section {
+    padding: 15px 20px 5px;
+    font-size: 11px;
+    color: #8d99ae;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 20px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* === Topbar === */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--panel-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    z-index: 10;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* === Buttons & Inputs === */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-icon {
+    background: none;
+    color: var(--text-color);
+    font-size: 14px;
+    padding: 5px 10px;
+    border: 1px solid var(--border-color);
+}
+
+.btn-icon:hover {
+    background-color: var(--bg-color);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modern-input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: inherit;
+    width: 100%;
+}
+
+/* === Pages === */
+#pages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px 30px;
+    position: relative;
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.home-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.algo-card {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.algo-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.algo-card .algo-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.card {
+    background-color: var(--panel-bg);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+/* === Algorithm Layout Grid === */
+.algo-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+@media (max-width: 1200px) {
+    .algo-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* === Theory Elements === */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.step-box {
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--border-color);
+    background-color: var(--bg-color);
+}
+
+.step-box.divide {
+    border-left-color: var(--warning-color);
+}
+
+.step-box.conquer {
+    border-left-color: var(--danger-color);
+}
+
+.step-box.combine {
+    border-left-color: var(--success-color);
+}
+
+.equation-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--code-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.math-eq {
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    color: var(--primary-color);
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* === Complexities === */
+.complex-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+
+/* Chart.js target */
+
+/* === Interactive Controls === */
+.controls-card {
+    padding: 15px 25px;
+}
+
+.controls-row {
+    margin-bottom: 15px;
+}
+
+.controls-row:last-child {
+    margin-bottom: 0;
+}
+
+.playback-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* === State Highlight Cards === */
+.state-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.state-card {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.state-card.highlight-divide {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-color: var(--warning-color);
+}
+
+.state-card.highlight-conquer {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-color: var(--danger-color);
+}
+
+.state-card.highlight-combine {
+    background-color: rgba(40, 167, 69, 0.1);
+    border-color: var(--success-color);
+}
+
+/* === Visualizer Canvas === */
+.visualizer-card {
+    flex: none;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+}
+
+#vis-container {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.vis-layer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+}
+
+#canvas-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    align-items: center;
+}
+
+/* Arrays */
+.array-box {
+    width: 40px;
+    height: 100%;
+    min-height: 30px;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 5px;
+    font-size: 12px;
+    font-family: 'Fira Code', monospace;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0 2px;
+}
+
+/* Matrix Styling */
+#matrix-layer {
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: auto;
+    padding: 10px;
+}
+
+.matrix-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border-color);
+    border: 2px solid var(--border-color);
+}
+
+.matrix-cell {
+    background: var(--panel-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    min-height: 30px;
+    padding: 5px;
+    font-size: 13px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: var(--text-color);
+}
+
+/* Visualization Highlights */
+.hl-divide {
+    background-color: var(--warning-color) !important;
+    color: #000 !important;
+}
+
+.hl-conquer {
+    background-color: var(--danger-color) !important;
+    color: #fff !important;
+}
+
+.hl-combine {
+    background-color: var(--success-color) !important;
+    color: #fff !important;
+}
+
+.hl-active {
+    filter: brightness(1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+.hl-sorted {
+    background-color: #6c757d !important;
+    opacity: 0.8;
+}
+
+/* === Pseudocode Styling === */
+.code-block {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    color: var(--text-color);
+    margin-top: 15px;
+}
+
+.code-line {
+    display: block;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border-left: 3px solid transparent;
+}
+
+.code-line.active-line {
+    background-color: rgba(67, 97, 238, 0.15);
+    border-left-color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* === Recursion Tree Visualization === */
+.recursion-card {
+    min-height: 250px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.recursion-card h2 {
+    padding: 20px 20px 0 20px;
+}
+
+.tree-container {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    background-color: var(--bg-color);
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+#tree-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
