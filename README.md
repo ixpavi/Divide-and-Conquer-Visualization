@@ -1,60 +1,169 @@
-DIVIDE-AND-CONQUER-VISUALIZATION
-Transform Complexity into Clarity Through Visual Mastery
+<a name="top"></a>
 
-last-commit repo-top-language repo-language-count
-Built with the tools and technologies:
+<div align="center">
 
-Markdown JavaScript
+# Divide and Conquer Algorithm Visualization
 
-Table of Contents
-Overview
-Getting Started
-Prerequisites
-Installation
-Usage
-Testing
-Overview
-Divide-and-Conquer-Visualization is a developer tool that brings complex divide-and-conquer algorithms to life through interactive visualizations and performance graphs. It enables users to explore algorithm steps, compare efficiencies across input sizes, and deepen their understanding of algorithmic complexity.
+Interactive web application that demonstrates **Divide and Conquer algorithms** using **animations, theory explanations, recurrence relations, and time complexity graphs**.
 
-Why Divide-and-Conquer-Visualization?
+[Live Demo](https://divide-and-conquer-visualization.vercel.app)
 
-This project aims to make algorithm education and debugging more intuitive. The core features include:
+</div>
 
-🎨 Visual Animation: Synchronized, step-by-step animations of recursive algorithms for clear understanding.
-📊 Performance Graphs: Dynamic rendering of Time Complexity graphs for visual comparison.
-🔍 Interactive Exploration: Users can delve into various complexity classes like O(1), O(n), and higher polynomials.
-⚙️ Modular Architecture: Well-structured codebase with core logic, rendering, and UI management for easy extension.
-🚀 Educational Focus: Designed to facilitate learning, debugging, and algorithm analysis within a unified platform.
-Getting Started
-Prerequisites
-This project requires the following dependencies:
+---
 
-Programming Language: JavaScript
-Package Manager: Npm
-Installation
-Build Divide-and-Conquer-Visualization from the source and install dependencies:
+## Badges
+
+![GitHub Repo stars](https://img.shields.io/github/stars/ixpavi/Divide-and-Conquer-Visualization)
+![GitHub forks](https://img.shields.io/github/forks/ixpavi/Divide-and-Conquer-Visualization)
+![GitHub license](https://img.shields.io/github/license/ixpavi/Divide-and-Conquer-Visualization)
+![GitHub last commit](https://img.shields.io/github/last-commit/ixpavi/Divide-and-Conquer-Visualization)
+
+---
+
+## Live Website
+
+Visit the deployed application:
+
+https://divide-and-conquer-visualization.vercel.app
+
+---
+
+## Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Algorithms Implemented](#algorithms-implemented)
+- [Divide and Conquer Concept](#divide-and-conquer-concept)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Deployment](#deployment)
+- [Future Improvements](#future-improvements)
+- [Author](#author)
+
+---
+
+## About
+
+This project is an **interactive algorithm visualizer** designed to help students understand the **Divide and Conquer paradigm**.
+
+It provides:
+
+- Algorithm explanations
+- Step-by-step execution animations
+- Mathematical recurrence relations
+- Time complexity graphs
+
+The goal is to make algorithm learning **visual and intuitive**.
+
+[Back to Top](#top)
+
+---
+
+## Features
+
+- Interactive **algorithm animations**
+- **Time complexity graphs**
+- Mathematical **recurrence relations**
+- Clear explanation of **Divide / Conquer / Combine phases**
+- Multiple divide and conquer algorithms
+- Clean and responsive UI
+
+[Back to Top](#top)
+
+---
+
+## Algorithms Implemented
+
+### Sorting
+- Merge Sort
+- Quick Sort
+
+### Divide and Conquer
+- Matrix Multiplication
+- Strassen's Matrix Multiplication
+- Min and Max Finding
+- Largest Subarray Sum
+
+### Computational Geometry
+- Closest Pair of Points
+- Convex Hull
+
+[Back to Top](#top)
+
+---
+
+## Divide and Conquer Concept
+
+Divide and Conquer works in three steps:
+
+### Divide
+Split the problem into smaller subproblems.
+
+### Conquer
+Solve each subproblem recursively.
+
+### Combine
+Merge the solutions of subproblems.
+
+Example recurrence relation for Merge Sort:
+
+
+T(n) = 2T(n/2) + n
+
+
+Time Complexity:
+
+
+O(n log n)
+
+
+[Back to Top](#top)
+
+---
+
+## Project Structure
+
+
+Divide-and-Conquer-Visualization
+│
+├── index.html
+├── style.css
+├── main.js
+├── script.js
+├── algorithms.js
+├── visualizer.js
+├── charts.js
+└── README.md
+
+
+[Back to Top](#top)
+
+---
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+- Chart.js
+- HTML Canvas
+- Vercel (deployment)
+
+[Back to Top](#top)
+
+---
+
+## Installation
 
 Clone the repository:
 
-❯ git clone https://github.com/ixpavi/Divide-and-Conquer-Visualization
-Navigate to the project directory:
+```bash
+git clone https://github.com/ixpavi/Divide-and-Conquer-Visualization.git
 
-❯ cd Divide-and-Conquer-Visualization
-Install the dependencies:
+Open the project folder and run:
 
-Using npm:
+index.html
 
-❯ npm install
-Usage
-Run the project with:
-
-Using npm:
-
-npm start
-Testing
-Divide-and-conquer-visualization uses the {test_framework} test framework. Run the test suite with:
-
-Using npm:
-
-npm test
-⬆ Return
+Back to Top
